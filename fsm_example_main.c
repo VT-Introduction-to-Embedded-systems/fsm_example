@@ -4,11 +4,12 @@
 typedef enum {SX, S1R, S2R, S3R, S4R, S1W, S2W, S3W, S4W} passcode_state_t;
 
 #define INPUT_ARRAY_SIZE 15
+
+// In this example the PIN for unlocking is 9876
 #define PIN1st_DIGIT 9
 #define PIN2nd_DIGIT 8
 #define PIN3rd_DIGIT 7
 #define PIN4th_DIGIT 6
-
 
 
 bool passcodeFSM(int guess);
@@ -48,9 +49,11 @@ int getGuessInput()
     return (guess);
 }
 
+// An empty function. Let's imagine this function plays a jingle!
 void playUnlockJingle() {
 
 }
+
 bool passcodeFSM(int guess) {
     static passcode_state_t currentState = SX;
 
@@ -113,6 +116,7 @@ bool passcodeFSM(int guess) {
 
     }
 
+    // the currentState is now reflecting the next state when we enter this function
     printf (", next state is %d, output is %d\n", currentState, unlock);
 
     if (unlock)
